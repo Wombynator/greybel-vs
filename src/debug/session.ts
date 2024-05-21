@@ -34,7 +34,7 @@ import { showCustomErrorMessage } from '../helper/show-custom-error';
 import { ansiProvider, useColor } from '../helper/text-mesh-transform';
 import { getPreviewInstance } from '../preview';
 import { InterpreterResourceProvider } from '../resource';
-import { GrebyelDebugger, GrebyelPseudoDebugger } from './debugger';
+import { GreybelDebugger, GreybelPseudoDebugger } from './debugger';
 import { VSOutputHandler } from './output';
 import { DebugSessionLike } from './types';
 
@@ -103,7 +103,7 @@ export class GreybelDebugSession
         resourceHandler: new InterpreterResourceProvider(),
         outputHandler: this._out
       }),
-      debugger: new GrebyelDebugger(me),
+      debugger: new GreybelDebugger(me),
       environmentVariables: new Map(
         Object.entries(environmentVariables).map(([key, value]) => [
           key,
@@ -199,7 +199,7 @@ export class GreybelDebugSession
     me._runtime.debugMode = !args.noDebug;
     me._runtime.setTarget(args.program);
     me._runtime.setDebugger(
-      args.noDebug ? new GrebyelPseudoDebugger() : new GrebyelDebugger(me)
+      args.noDebug ? new GreybelPseudoDebugger() : new GreybelDebugger(me)
     );
     me._env.getLocal().programPath.content =
       await me._runtime.handler.resourceHandler.get(uri.fsPath);

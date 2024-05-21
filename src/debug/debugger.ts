@@ -5,7 +5,7 @@ import { Uri } from 'vscode';
 
 import { DebugSessionLike } from './types';
 
-export class GrebyelDebugger extends Debugger {
+export class GreybelDebugger extends Debugger {
   session: DebugSessionLike;
 
   constructor(session: DebugSessionLike) {
@@ -40,7 +40,7 @@ export class GrebyelDebugger extends Debugger {
   }
 }
 
-export class GrebyelPseudoDebugger extends Debugger {
+export class GreybelPseudoDebugger extends Debugger {
   getBreakpoint(_vm: VM): boolean {
     return false;
   }
